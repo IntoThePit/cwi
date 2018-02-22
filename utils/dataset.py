@@ -13,7 +13,7 @@ class Dataset(object):
         self.devset = self.read_dataset(devset_path)
 
     def read_dataset(self, file_path):
-        with open(file_path) as file:
+        with open(file_path, encoding="utf-8") as file:
             fieldnames = ['hit_id', 'sentence', 'start_offset', 'end_offset', 'target_word', 'native_annots',
                           'nonnative_annots', 'native_complex', 'nonnative_complex', 'gold_label', 'gold_prob']
             reader = csv.DictReader(file, fieldnames=fieldnames, delimiter='\t')
