@@ -8,8 +8,8 @@ def execute_demo(language):
 
     print("{}: {} training - {} dev".format(language, len(data.trainset), len(data.devset)))
 
-    # for sent in data.trainset:
-    #    print(sent['sentence'], sent['target_word'], sent['gold_label'])
+#    for sent in data.trainset:
+#        print(sent['sentence'], sent['target_word'], sent['gold_label'])
 
     baseline = Baseline(language)
 

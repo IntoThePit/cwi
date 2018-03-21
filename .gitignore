@@ -1,2 +1,4 @@
 datasets/*
 utils/__pycache__/*
+baselineReport/*
+!baselineReport/classProjectBaselineReport.tex
