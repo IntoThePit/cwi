@@ -221,11 +221,11 @@ class Baseline(object):
         result.append(len_chars)
         result.append(len_tokens)
         result.append(r_score_norm)
-#        result.append(max_cons_v)
-#        result.append(max_cons_c)
-#        result.append(num_synonyms)
-#        
-#        result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect, self.tag_vect))
+        result.append(max_cons_v)
+        result.append(max_cons_c)
+        result.append(num_synonyms)
+        
+        result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect, self.tag_vect))
         
 #        if word == "biology" or word == "neurons" or word == "disruption":
 #            print(word)

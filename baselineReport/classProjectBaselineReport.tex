@@ -31,33 +31,29 @@
 
 
 \title{Baseline Progress Report}
-
+\author{Pierre Finnimore}
 \begin{document}
 \maketitle
 
 \section{Progress so far}
 
-For my baseline system, I focused on features that can be extracted using only the target word; no context words were considered. First, I improved the basic architecture of the provided baseline to allow easy pattern-matching of prefixes, infixes and suffixes, and for further features of this type to be easily added.
+For my baseline system, I focused on features that can be extracted using only the target word; no context words were considered. First, I improved the basic architecture of the provided baseline to allow easy pattern-matching of prefixes, infixes and suffixes, and for further features of this type to be easily added.\\
 
 
 My initial hypotheses to try for the baseline were as follows:
 \begin{enumerate}
-\item Letter rarity - because words with rarer letters might be harder to understand.
-\item Max consecutive consonants, max consecutive vowels - because dense combinations of letters might be difficult to parse
-\item Uniquely English vowel/consonant diagraphs/consonant blends - because a non-English speaker might find these tricky.
-\item POS tags - because some POS are part of closed sets and so potentially easier to understand
-\item Number of synonyms - because ambiguous words might be more confusing
+\item Letter rarity - this feature was chosen because words with rarer letters might be harder to understand. This feature could be seen as a vague approximation of word rarity, which would otherwise require more data to learn.
+\item Max consecutive consonants, max consecutive vowels - the idea behind this was that dense combinations of letters might be difficult to parse. For example "queueing" or "rhythms". These words deviate from the more straightforward consonant-vowel-consonant-vowel pattern.
+\item Uniquely English vowel/consonant diagraphs/consonant blends - this was chosen because a non-English speaker might find these tricky. This feature could be expanded (and made more adaptable to different languages) by analysing a corpus for particularly rare combinations.
+\item POS tags - because some POS are part of closed sets, and so potentially easier to understand. In addition, certain rarer tags might be harder to comprehend, especially in languages where the overall form of the word is changed, depending on its POS.
+\item Number of synonyms - The idea was that ambiguous words might be more confusing. Conversely, perhaps ambiguous words are actually less likely to be regarded as complex, since it is more likely that the person knows at least one of the meanings.
 \end{enumerate}
 
-All of these features were stacked together and run through the basic linear regression.
-
-While individually, these features did allow the system to predict with greater-than-random accuracy, most of them did not improve over the initial baseline. Some of the features, such as consecutive vowels, reduced the testing accuracy if they were added. This may just be noise in the data, or it may be that learning is made more difficult if irrelevant features are added.
+While individually, these features did allow the system to predict with greater-than-random accuracy, most of them did not improve over the initial baseline. Some of the features I tried, such as spanish prefixes, reduced the testing accuracy if they were added. This may just be noise in the data, or it may be that learning is made more difficult if irrelevant or common features are added. This may be less of a problem with a different learning model.
 
 I also experimented with word embeddings, but have not yet implemented them to a working level.
 
-\section{What next}
-
-With all of my features and the Random Forest Classifier, my system had a macro-F1 score of 0.81 and 0.74 for English and Spanish respectively, which are both improvements over the basic baseline of 0.69 and 0.72.
+\section{Next Steps}
 
 One of the more obvious additions would be to add context to my currently context-free features. Given the fact that humans frequently infer meaning from context, it seems that this could be a fruitful way to increase performance. There are various ways to achieve this increased context, such as looking at N-grams, semantic trees, or using a Machine Learning approach that has 'memory'.
 
@@ -67,6 +63,10 @@ Many of my features are approximations for the rarity of a word, so it might be 
 
 I briefly tried a few different Machine Learning techniques, such as scikit's Random Forest Classifier, which provided significant improvements to the overall scores. Given the fact that this approach is not even suited to the large number of features I was feeding it, this shows some promise for making improvements that are tuned to the specific Machine Learning Approach. 
 
+With all of my features and the Random Forest Classifier, my system had a macro-F1 score of 0.81 and 0.74 for English and Spanish respectively, which are both improvements over the initial baseline of 0.69 and 0.72.
+
 Thus, my next step would be to explore the different Machine Learning approaches in a more rigorous way, thinking more precisely about which features to use and how to process them.
+
+
 
 \end{document}
