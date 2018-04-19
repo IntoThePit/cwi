@@ -18,6 +18,13 @@ def execute_demo(language):
     predictions = baseline.test(data.devset)
 
     gold_labels = [sent['gold_label'] for sent in data.devset]
+    
+    # Error analysis:
+    sentences = [sent['sentence'] for sent in data.devset]
+    targets = [sent['target_word'] for sent in data.devset]
+    max_prints = 100
+    for sent_i in range(max_prints):
+        print("Sent: {}\n Word: {}\n Predict: {}\n Gold: {}\n".format(sentences[sent_i], targets[sent_i],predictions[sent_i], gold_labels[sent_i]))
 
     report_score(gold_labels, predictions)
 
