@@ -6,6 +6,8 @@ from nltk import word_tokenize, pos_tag, download
 from nltk.data import load
 from nltk.corpus import wordnet
 
+from scipy.sparse import csr_matrix
+
 
 
 class Baseline(object):
@@ -129,8 +131,6 @@ class Baseline(object):
         len_chars = len(word) / self.avg_word_length
         len_tokens = len(word.split(' '))
         
-        # Add all of the pre-processing to the init area
-        
         
         r_score = 0.0
         vowels = ['a','e','i','o','u']
@@ -174,18 +174,18 @@ class Baseline(object):
 #        print(max_cons_v, max_cons_c, word)
                 
         r_score_norm = r_score/len(word)
-        
-#        test_words = word.split(' ')
+
         test_words = word_tokenize(word)
-        test_tags = [x[1] for x in pos_tag(test_words)]
         
-        self.tag_vect.fill(0)
-        
-        for tag in test_tags:
-            if tag not in self.tag_vect_template:
-                print("Error! Didn't find tag! This shouldn't happen.")
-            else:
-                self.tag_vect[self.tag_vect_template[tag]] = 1
+#        test_tags = [x[1] for x in pos_tag(test_words)]
+#        
+#        self.tag_vect.fill(0)
+#        
+#        for tag in test_tags:
+#            if tag not in self.tag_vect_template:
+#                print("Error! Didn't find tag! This shouldn't happen.")
+#            else:
+#                self.tag_vect[self.tag_vect_template[tag]] = 1
                 
         self.prefix_vect.fill(0)
         self.inside_vect.fill(0)  
@@ -225,7 +225,7 @@ class Baseline(object):
         result.append(max_cons_c)
         result.append(num_synonyms)
         
-        result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect, self.tag_vect))
+        result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect))
         
 #        if word == "biology" or word == "neurons" or word == "disruption":
 #            print(word)
@@ -245,6 +245,7 @@ class Baseline(object):
 #                if self.inside_vect[i] == 1:
 #                    print(self.inside_check[i], self.inside_vect[i])
 
+#        print(sparse_result)
         return result
 
     def train(self, trainset):
