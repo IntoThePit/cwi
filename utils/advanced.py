@@ -10,6 +10,8 @@ from scipy.sparse import csr_matrix
 
 
 
+
+
 class Advanced(object):
 
     def __init__(self, language):
@@ -81,6 +83,23 @@ class Advanced(object):
         eng_init_sounds = set(("kn", "qu", "wr", "sk"))
         eng_prefixes = set(("un","over","under"))
         
+        # Advanced settings:
+        self.simple_words = defaultdict(int)
+        self.simple_bi = defaultdict(int)
+        self.simple_tri = defaultdict(int)
+
+        with open("1000simpleEnglishWords.txt") as file:
+            for line in file:
+                for w in line.split(', '):
+                    self.simple_words[w] += 1
+                    for l in range(1, len(w)):
+                        bi = w[l-1] + w[l]
+                        self.simple_bi[bi] += 1
+                        if l > 1:
+                            tri = w[l-2] + w[l-1] + w[l]
+                            self.simple_tri[tri] += 1
+                            
+        
         sp_prefixes = set()    
         with open("spprefixes.txt") as file:
             for line in file:
@@ -112,10 +131,16 @@ class Advanced(object):
                     
 #        Adding spanish suffixes made it worse!
         self.suffix_check = list(eng_suffixes | eng_final_sounds | eng_endings | sp_suffixes)
+        
+        self.tri_check = list(self.simple_tri)
+        self.bi_check = list(self.simple_bi)
            
         self.prefix_vect = np.array(np.zeros(len(self.prefix_check)))          
         self.inside_vect = np.array(np.zeros(len(self.inside_check)))
         self.suffix_vect = np.array(np.zeros(len(self.suffix_check)))
+        
+        self.bi_vect = np.array(np.zeros(len(self.bi_check)))
+        self.tri_vect = np.array(np.zeros(len(self.tri_check)))
         
         tag_keys = load('help/tagsets/upenn_tagset.pickle').keys()
         
@@ -126,6 +151,12 @@ class Advanced(object):
             tag_id += 1
             
         self.tag_vect = np.array(np.zeros(len(tag_keys)))
+        
+        
+        self.ordered_feature_list = []
+
+
+
 
     def extract_features(self, word):
         len_chars = len(word) / self.avg_word_length
@@ -191,6 +222,9 @@ class Advanced(object):
         self.inside_vect.fill(0)  
         self.suffix_vect.fill(0)
         
+        self.bi_vect.fill(0)
+        self.tri_vect.fill(0)
+        
         for cased_word in test_words:
             
             word = cased_word.lower()
@@ -216,17 +250,51 @@ class Advanced(object):
                 if word.endswith(suffix):
                     self.suffix_vect[suffix_index] = 1
                 suffix_index += 1
+                
+            simple_tri_index = 0
+            for tri in self.tri_check:
+                if tri in word:
+                    self.tri_vect[simple_tri_index] = self.simple_tri[tri]
+                simple_tri_index += 1
+                
+            simple_bi_index = 0
+            for bi in self.bi_check:
+                if bi in word:
+                    self.bi_vect[simple_bi_index] = self.simple_bi[bi]
+                simple_bi_index += 1
         
         result = []
+        feature_labels = []
+        
         result.append(len_chars)
+        feature_labels.append('Number of characters')
+        
         result.append(len_tokens)
+        feature_labels.append('Number of tokens')
+        
         result.append(r_score_norm)
+        feature_labels.append('Rarity score')
+        
         result.append(max_cons_v)
+        feature_labels.append('Max consecutive vowels')
+        
         result.append(max_cons_c)
+        feature_labels.append('Max consecutive consonants')
+        
         result.append(num_synonyms)
+        feature_labels.append('Synonym count')
         
-        result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect))
+        suffix_labels = ["Suffix: " + str(self.suffix_check[x]) for x in range(len(self.suffix_vect))]
+        prefix_labels = ["Prefix: " + str(self.prefix_check[x]) for x in range(len(self.prefix_vect))]
+        infix_labels = ["Infix: " + str(self.inside_check[x]) for x in range(len(self.inside_vect))]
         
+        tri_labels = ["Tri: " + str(self.tri_check[x]) for x in range(len(self.tri_vect))]
+        bi_labels = ["Bi: " + str(self.bi_check[x]) for x in range(len(self.bi_vect))]
+        
+        feature_labels = np.hstack((feature_labels, suffix_labels, infix_labels, prefix_labels, tri_labels, bi_labels))
+        result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect, self.tri_vect, self.bi_vect))
+        
+        self.ordered_feature_list = feature_labels
 #        if word == "biology" or word == "neurons" or word == "disruption":
 #            print(word)
 #            
@@ -256,6 +324,7 @@ class Advanced(object):
             y.append(sent['gold_label'])
 
         self.model.fit(X, y)
+        return self.model
 
     def test(self, testset):
         X = []

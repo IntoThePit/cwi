@@ -57,8 +57,49 @@ We are interested in identifying word complexity for several reasons. Automatic 
 
 System descriptions in enough detail for the reader to be able to understand how to reimplement your baseline models and to appreciate why they are suitable for the task at hand.
 
-\section{Improved system motivation and description}
+The baseline system we developed was somewhat more advanced than the initial baseline provided. Both languages used an identical model and set of features. These were:
 
+\begin{enumerate}
+\item Number of characters in the target
+\item Number of words in the target
+\item \enquote{Rarity} score based on letters of the target
+\item Maximum number of consecutive vowels
+\item Maximum number of consecutive consonants
+\item Number of synonyms
+\item Common English and Spanish Suffixes
+\item Common English and Spanish Prefixes
+\item Common English and Spanish Infixes
+\item Common Latin and Greek prefixes
+\end{enumerate}
+
+For my baseline system, I focused on features that can be extracted using only the target word; no context words were considered. First, I improved the basic architecture of the provided baseline to allow easy pattern-matching of prefixes, infixes and suffixes, and for further features of this type to be easily added.\\
+
+
+My initial hypotheses to try for the baseline were as follows:
+\begin{enumerate}
+\item Letter rarity - this feature was chosen because words with rarer letters might be harder to understand. This feature could be seen as a vague approximation of word rarity, which would otherwise require more data to learn.
+\item Max consecutive consonants, max consecutive vowels - the idea behind this was that dense combinations of letters might be difficult to parse. For example "queueing" or "rhythms". These words deviate from the more straightforward consonant-vowel-consonant-vowel pattern.
+\item Uniquely English vowel/consonant diagraphs/consonant blends - this was chosen because a non-English speaker might find these tricky. This feature could be expanded (and made more adaptable to different languages) by analysing a corpus for particularly rare combinations.
+\item POS tags - because some POS are part of closed sets, and so potentially easier to understand. In addition, certain rarer tags might be harder to comprehend, especially in languages where the overall form of the word is changed, depending on its POS.
+\item Number of synonyms - The idea was that ambiguous words might be more confusing. Conversely, perhaps ambiguous words are actually less likely to be regarded as complex, since it is more likely that the person knows at least one of the meanings.
+\end{enumerate}
+
+While individually, these features did allow the system to predict with greater-than-random accuracy, most of them did not improve over the initial baseline. Some of the features I tried, such as spanish prefixes, reduced the testing accuracy if they were added. This may just be noise in the data, or it may be that learning is made more difficult if irrelevant or common features are added. This may be less of a problem with a different learning model.
+
+\section{Improved system motivation and description}
+One of the features added for 
+
+We found a list of \enquote{1000 simple English words} on Wikipedia, and used these to extract sub-word features of two or three letters long. The idea was that these words may contain certain patterns that people regard as simple, and each sub-word feature was weighted by how often it occurred in the text. Interestingly, introducing these features improved the Spanish F-score, but not the English F-score. This may be because those combinations also happened to correlate with easy or difficult morphological features in Spanish, or it may be that the participants of the original study found that combinations that they recognised from English were easier or more difficult to identify in Spanish.
+
+The single largest improvement to the model was obtained by using a Random Forest Classifier rather than a Logistic Regression classifier. There are several reasons that we might think that a Random Forest Classifier would be a promising candidate for a task such as this. 
+
+First, \cite{treeratpituk2009disambiguating}
+
+Lastly, there is significant precedent for use of this system
+
+When we used the Random Forest Classifier, we took a look at the most important features for each model. As expected, \enquote{Number of characters in target} and \enquote{Number of tokens in target} were the number 1 and 2 spots for importance for both languages. Interestingly, the \enquote{Rarity score}, which we developed as a basic measure of the use of rare letters in the word was the 3rd most important feature for English and 4th most important feature for Spanish. 
+
+It is important to note that we may be getting the wrong impression from these importance scores, since each feature is measured independently. While there is only one \enquote{Number of synonyms} feature, there are 312 \enquote{Two-letter infix} features and \textit{1297} \enquote{Three-letter infix} features. While any given infix feature may be less significant than these more comprehensive, overall features, the sum total of their effect may be greater.
 
 
 \section{Experiments on development set}
@@ -82,7 +123,7 @@ what have we learnt from your experiments that could inform future work
 %\bibliographystyle{acl}
 %\bibliography{acl2018}
 
-%\bibliography{mybib}
-%\bibliographystyle{acl_natbib}
+\bibliography{mybib}
+\bibliographystyle{acl_natbib}
 
 \end{document}
