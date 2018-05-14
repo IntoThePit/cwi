@@ -8,9 +8,11 @@ class Dataset(object):
 
         trainset_path = "datasets/{}/{}_Train.tsv".format(language, language.capitalize())
         devset_path = "datasets/{}/{}_Dev.tsv".format(language, language.capitalize())
+        testset_path = "datasets/{}/{}_Dev.tsv".format(language, language.capitalize())
 
         self.trainset = self.read_dataset(trainset_path)
         self.devset = self.read_dataset(devset_path)
+        self.testset = self.read_dataset(testset_path)
 
     def read_dataset(self, file_path):
         with open(file_path, encoding="utf-8") as file:
@@ -21,3 +23,4 @@ class Dataset(object):
             dataset = [sent for sent in reader]
 
         return dataset
+    
