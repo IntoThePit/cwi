@@ -17,6 +17,7 @@
 \usepackage{latexsym}
 
 \usepackage{csquotes}
+\usepackage{graphicx}
 
 \usepackage{url}
 
@@ -45,10 +46,6 @@
 
 \section{Introduction}
 
-Initial words: 271
-
-What is the task and why is it important?
-
 The task is as follows: given a target word (or set of words) within a sentence, identify if the target is \enquote{complex}. The data given for this task is a set of labelled sentences with targets. The labels were derived from a survey of both Native and Non-native speakers of two languages: English and Spanish.
 
 We are interested in identifying word complexity for several reasons. Automatic extraction of complex terms could help with automated tutoring systems, Natural Language Generation, writing editing software, studies into second-language acquisition, political speech analysis, Machine Translation, as well as linguistic or psychological studies into the what people find complex. 
@@ -57,9 +54,23 @@ We are interested in identifying word complexity for several reasons. Automatic 
 
 System descriptions in enough detail for the reader to be able to understand how to reimplement your baseline models and to appreciate why they are suitable for the task at hand.
 
-The baseline system we developed was somewhat more advanced than the initial baseline provided. Both languages used an identical model and set of features. These were:
+The baseline system we developed was somewhat more advanced than the initial baseline provided. Both languages used an identical model and set of features. We focused on features that can be extracted using only the target word; no context words were considered. First, we improved the basic architecture of the provided baseline to allow easy pattern-matching of prefixes, infixes and suffixes, and for further features of this type to be easily added.\\
+
+Our initial hypotheses to try for the baseline were as follows:
+\begin{enumerate}
+\item Letter rarity - this feature was chosen because words with rarer letters might be harder to understand. This feature could be seen as a vague approximation of word rarity, which would otherwise require more data to learn.
+\item Max consecutive consonants, max consecutive vowels - the idea behind this was that dense combinations of letters might be difficult to parse. For example "queueing" or "rhythms". These words deviate from the more straightforward consonant-vowel-consonant-vowel pattern.
+\item Uniquely English vowel/consonant diagraphs/consonant blends - this was chosen because a non-English speaker might find these tricky. This feature could be expanded (and made more adaptable to different languages) by analysing a corpus for particularly rare combinations.
+\item POS tags - because some POS are part of closed sets, and so potentially easier to understand. In addition, certain rarer tags might be harder to comprehend, especially in languages where the overall form of the word is changed, depending on its POS.
+\item Number of synonyms - The idea was that ambiguous words might be more confusing. Conversely, perhaps ambiguous words are actually less likely to be regarded as complex, since it is more likely that the person knows at least one of the meanings.
+\end{enumerate}
+
+While individually, these features did allow the system to predict with greater-than-random accuracy, most of them did not improve over the initial baseline. Some of the features we tried, such as spanish prefixes, reduced the testing accuracy if they were added. This may just be noise in the data, or it may be that learning is made more difficult if irrelevant or common features are added. This may be less of a problem with a different learning model.
+
+We quickly identified that POS tags were computationally costly to include, while not providing improvements to performance, and so removed them. Our final Baseline System used the following features:
 
 \begin{enumerate}
+\itemsep0em
 \item Number of characters in the target
 \item Number of words in the target
 \item \enquote{Rarity} score based on letters of the target
@@ -72,26 +83,51 @@ The baseline system we developed was somewhat more advanced than the initial bas
 \item Common Latin and Greek prefixes
 \end{enumerate}
 
-For my baseline system, I focused on features that can be extracted using only the target word; no context words were considered. First, I improved the basic architecture of the provided baseline to allow easy pattern-matching of prefixes, infixes and suffixes, and for further features of this type to be easily added.\\
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Language} & \textbf{LR} & \textbf{RFC} \\
+\hline
+English & 0.73 & 0.81 \\ \hline
+Spanish & 0.74 & 0.75 \\ \hline
+\end{tabular}
+\caption{Macro-F1 Score for baseline system, with logistic regression (LR) and random forest classifier (RFC)}
+\label{tab:baseline}
+\end{center}
+\end{table}
 
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Language} & \textbf{LR} & \textbf{RFC} \\
+\hline
+English & 0.77 & 0.82 \\ \hline
+Spanish & 0.77 & 0.74 \\ \hline
+\end{tabular}
+\caption{Macro-F1 Score for advanced system, with logistic regression (LR) and random forest classifier (RFC)}
+\label{tab:advanced}
+\end{center}
+\end{table}
 
-My initial hypotheses to try for the baseline were as follows:
-\begin{enumerate}
-\item Letter rarity - this feature was chosen because words with rarer letters might be harder to understand. This feature could be seen as a vague approximation of word rarity, which would otherwise require more data to learn.
-\item Max consecutive consonants, max consecutive vowels - the idea behind this was that dense combinations of letters might be difficult to parse. For example "queueing" or "rhythms". These words deviate from the more straightforward consonant-vowel-consonant-vowel pattern.
-\item Uniquely English vowel/consonant diagraphs/consonant blends - this was chosen because a non-English speaker might find these tricky. This feature could be expanded (and made more adaptable to different languages) by analysing a corpus for particularly rare combinations.
-\item POS tags - because some POS are part of closed sets, and so potentially easier to understand. In addition, certain rarer tags might be harder to comprehend, especially in languages where the overall form of the word is changed, depending on its POS.
-\item Number of synonyms - The idea was that ambiguous words might be more confusing. Conversely, perhaps ambiguous words are actually less likely to be regarded as complex, since it is more likely that the person knows at least one of the meanings.
-\end{enumerate}
-
-While individually, these features did allow the system to predict with greater-than-random accuracy, most of them did not improve over the initial baseline. Some of the features I tried, such as spanish prefixes, reduced the testing accuracy if they were added. This may just be noise in the data, or it may be that learning is made more difficult if irrelevant or common features are added. This may be less of a problem with a different learning model.
+It achieved performance of 0.73 on English and 0.75 on Spanish with a logistic regression approach, and
 
 \section{Improved system motivation and description}
+
+Since basic logistic regression was more effective for Spanish, we separated the model approaches for the two languages.
+
 One of the features added for 
 
 We found a list of \enquote{1000 simple English words} on Wikipedia, and used these to extract sub-word features of two or three letters long. The idea was that these words may contain certain patterns that people regard as simple, and each sub-word feature was weighted by how often it occurred in the text. Interestingly, introducing these features improved the Spanish F-score, but not the English F-score. This may be because those combinations also happened to correlate with easy or difficult morphological features in Spanish, or it may be that the participants of the original study found that combinations that they recognised from English were easier or more difficult to identify in Spanish.
 
-The single largest improvement to the model was obtained by using a Random Forest Classifier rather than a Logistic Regression classifier. There are several reasons that we might think that a Random Forest Classifier would be a promising candidate for a task such as this. 
+The single largest improvement to the model was obtained by using a Random Forest Classifier rather than a Logistic Regression classifier. To understand why it is effective, it is easiest to start with thinking about a simple decision tree. A decision tree is a sequence of decisions, based on the features supplied, which partition the result space. If we were making our own decision tree for this task, we might think something like \enquote{Is the word longer than 10 letters? If yes, it is complex. If no, does the word end with \enquote{ough}? If yes, it is complex. Otherwise, it isn't.}. This set of rules, which partition the classes effectively, can be learned by the computer. 
+
+However, there are issues with simple decision trees. Since we do not know ahead of time what the optimal partitions are, we take an approach where we see at each decision point how to partition the features such that it splits the data. But this will only guarantee locally good splits: there may be a different split that leads to globally better partitions. In addition, they are likely to overfit as the partitions get small. This is where Random Forests are useful. They can take a set of simple decision trees, each trained on a different subset of the features, and make a decision based on all of those smaller decisions. In a way, we could think about each simple decision tree extracting some feature or cluster of features, like the \enquote{length + ough-suffix}, and the Random Forest learns how to make decisions based on these more sophisticated, abstracted features. 
+
+This is somewhat analagous to the hidden layers of a neural network, where first we reduce the dimensionality of our data to features, then we reduce the dimensionality of our features to a set of abstracted feature-combinations, and only \emph{then} make our decision.
+
+ There are several reasons that we might think that a Random Forest Classifier, which produces these feature-combinations, would be a promising candidate for a task such as this. 
 
 First, \cite{treeratpituk2009disambiguating}
 
@@ -101,14 +137,113 @@ When we used the Random Forest Classifier, we took a look at the most important 
 
 It is important to note that we may be getting the wrong impression from these importance scores, since each feature is measured independently. While there is only one \enquote{Number of synonyms} feature, there are 312 \enquote{Two-letter infix} features and \textit{1297} \enquote{Three-letter infix} features. While any given infix feature may be less significant than these more comprehensive, overall features, the sum total of their effect may be greater.
 
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|l|c|}
+\hline
+\textbf{Rank} & \textbf{Feature} & \textbf{Importance} \\
+\hline
+1. & Number of characters & (0.106) \\ \hline
+2. & Synonym count & (0.0397) \\ \hline
+3. & Number of tokens & (0.0378) \\ \hline
+4. & Rarity score & (0.0358) \\ \hline
+5. & Max cons. consonants & (0.0142) \\ \hline
+6. & Suffix: ed & (0.00915) \\ \hline
+7. & Bi: ed & (0.00894) \\ \hline
+8. & Infix: r & (0.00851) \\ \hline
+9. & Max cons. vowels & (0.00737) \\ \hline
+10. & Bi: ti & (0.00669) \\ \hline
+\end{tabular}
+\caption{Top 10 English Features}
+\label{tab:EngFeats}
+\end{center}
+\end{table}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|l|c|}
+\hline
+\textbf{Rank} & \textbf{Feature} & \textbf{Importance} \\
+\hline
+1. & Number of tokens & (0.0894) \\ \hline
+2. & Number of characters & (0.076) \\ \hline
+3. & Rarity score & (0.0441) \\ \hline
+4. & Max cons. consonants & (0.0246) \\ \hline
+5. & Bi: de & (0.0115) \\ \hline
+6. & Synonym count & (0.0109) \\ \hline
+7. & Infix: r & (0.0099) \\ \hline
+8. & Max cons. vowels & (0.00914) \\ \hline
+9. & Suffix: a & (0.00805) \\ \hline
+10. & Suffix: s & (0.00725) \\ \hline
+\end{tabular}
+\caption{Top 10 Spanish Features}
+\label{tab:EngFeats}
+\end{center}
+\end{table}
+
+
 
 \section{Experiments on development set}
 
 Does your idea work as expected? Evaluate on the test set the baseline and the improved system, is it still the case? Identify examples in development data which help showcase why the improved system works better.
 
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Data} & \textbf{System} & \textbf{Language} & \textbf{Score} \\
+\hline \hline
+Dev. & Baseline & English & 0.99 \\ \hline
+Test & Baseline & English & 0.99 \\ \hline \hline
+Dev. & Advanced & English & 0.99 \\ \hline
+Test & Advanced & English & 0.99 \\ \hline \hline
+Dev. & Baseline & Spanish & 0.99 \\ \hline
+Test & Baseline & Spanish & 0.99 \\ \hline \hline
+Dev. & Advanced & Spanish & 0.99 \\ \hline
+Test & Advanced & Spanish & 0.99 \\ \hline
+\end{tabular}
+\caption{Macro-F1 Score on Development and Test data, for different systems and languages.}
+\label{tab:testdev}
+\end{center}
+\end{table}
+
+Some of the ideas that we tried worked, but not in the expected way. For example, the case mentioned in the previous section, where adding subword features from 1000 simple English words improved the Spanish score. However, it appears that there is some linguistic research to suggest why this may be the case: Morphology may be particularly important to Spanish learners.
+
 \section{Learning curves}
 
-Plot learning curves for the trainable systems you experiment with. Are some systems better than others when less training data is available?
+\begin{figure}[h]
+\begin{minipage}[b]{1.0\linewidth}
+  \centering
+  \centerline{\includegraphics[width=8.5cm]{images/RFCEng}}
+\end{minipage}
+\begin{minipage}[b]{1.0\linewidth}
+  \centering
+  \centerline{\includegraphics[width=8.5cm]{images/RFCSp}}
+\end{minipage}
+\caption{5-fold cross validation performance on English and Spanish training data for a Random Forest Classifier with 20 Trees}
+\label{fig:RFC}
+\end{figure}
+
+In general, the systems seen in Figs. \ref{fig:RFC} and \ref{fig:Log} indicate that the Spanish data is more difficult to learn from, with a lower starting point and shallower improvements as more data was added. This may be a peculiarity of the dataset that we had, or representative of the nature of the language itself.
+
+\begin{figure}[h]
+\begin{minipage}[b]{1.0\linewidth}
+  \centering
+  \centerline{\includegraphics[width=8.5cm]{images/LogEng}}
+\end{minipage}
+\begin{minipage}[b]{1.0\linewidth}
+  \centering
+  \centerline{\includegraphics[width=8.5cm]{images/LogSp}}
+\end{minipage}
+\caption{5-fold cross validation performance on English and Spanish training data for a Logistic Regression}
+\label{fig:Log}
+\end{figure}
+
+The curves for the logistic regression approach in Fig. \ref{fig:Log} are converging to a greater extent than those of the Random Forest Classifier seen in Fig. \ref{fig:RFC}. This suggests that adding more training data would do little for the logistic regression approach, whereas there are still potential gains to be had for the Random Forest Classifier, if more data were available.
+
+With little data available, the Random Forest Classifier still outperforms the Logistic Regression approach. In general, the approaches that we would expect to take the most data would be those based on neural networks, since back-propagation requires very small steps along the gradient. However, since we did not implement these techniques, we did not encounter this difficulty.
+
+
 
 \section{Examples of failed predictions}
 
@@ -117,6 +252,8 @@ Identify examples where your improved system fails to predict correctly and prop
 \section{Conclusions}
 
 what have we learnt from your experiments that could inform future work
+
+Our main approach to this task was to find some data, then try to extract as much as we could from that data. We primarily focussed on subword features, as these effectively reduce sparsity. These subword features proved to be effective at this task, suggesting that at least one component of perceived complexity is simply the structure of the word's constituent letters.
 
 
 % include your own bib file like this:

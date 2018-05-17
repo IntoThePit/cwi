@@ -20,8 +20,8 @@ class Baseline(object):
         else:  # spanish
             self.avg_word_length = 6.2
 
-#        self.model = RandomForestClassifier(n_estimators = 20)
-        self.model = LogisticRegression()
+        self.model = RandomForestClassifier(n_estimators = 20)
+#        self.model = LogisticRegression()
         
         # This one didn't seem to do anything.
         l_rarity = defaultdict(float, 
