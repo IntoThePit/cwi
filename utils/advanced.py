@@ -60,17 +60,6 @@ class Advanced(object):
         
         sp_consonants = set(("v", "ll", "h", "j", "r", "rr", "z", "ñ", "x"))
         
-#        Vowel diagraphs: ou, ow, eigh, au, aw, oo
-#        Consonant digraphs: sh, th, wh, ph
-#        Consonant blends: sl, sm, sts, scr, spr, str
-#        Initial sounds: kn, qu, wr, sk
-#        Final sounds: ck, ng, gh
-#        Endings: -ed (pronounced /d/ or /t/ or /ded/ or /ted/)
-#        Endings: -s (pronounced /s/ or /z/ or /ez/ or /es/)
-#        Endings without a vowel: -ps, -ts
-#        Suffixes/prefixes: un-, over-, under-, -ly, -ness, -ful, -est
-#        http://www.colorincolorado.org/article/capitalizing-similarities-and-differences-between-spanish-and-english
-        
         eng_v_diagraphs = set(("ou", "ow", "eigh", "au", "aw", "oo"))
         eng_c_diagraphs = set(("sh", "th", "wh", "ph"))
         eng_c_blends = set(("sl", "sm", "sts", "scr", "spr", "str"))

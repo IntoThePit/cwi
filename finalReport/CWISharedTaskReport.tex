@@ -50,7 +50,7 @@
 
 The task is as follows: given a target word (or set of words) within a sentence, identify if the target is \enquote{complex}. The data given for this task is a set of labelled sentences with targets. The labels were derived from a survey of both Native and Non-native speakers of two languages: English and Spanish.
 
-We are interested in identifying word complexity for several reasons. Automatic extraction of complex terms could help with automated tutoring systems, Natural Language Generation, writing editing software, studies into second-language acquisition, political speech analysis, Machine Translation, as well as linguistic or psychological studies into the what people find complex. 
+We are interested in identifying word complexity for several reasons. Automatic extraction of complex terms could help with automated tutoring systems \cite{valenti2003overview}, Natural Language Generation, writing editing software, studies into second-language acquisition \cite{ramirez2010morphological}, speech memorability analysis \cite{danescu2012you}, Machine Translation, as well as linguistic or psychological studies into the what people find complex. 
 
 Our code for this task is available at \url{https://github.com/IntoThePit/cwi}
 
@@ -199,11 +199,11 @@ Here are some of the targets that the advanced system predicted correctly, while
 \begin{figure}[h]
 \begin{minipage}[b]{1.0\linewidth}
   \centering
-  \centerline{\includegraphics[width=7.5cm]{images/RFCEng}}
+  \centerline{\includegraphics[width=7cm]{images/RFCEng}}
 \end{minipage}
 \begin{minipage}[b]{1.0\linewidth}
   \centering
-  \centerline{\includegraphics[width=7.5cm]{images/RFCSp}}
+  \centerline{\includegraphics[width=7cm]{images/RFCSp}}
 \end{minipage}
 \caption{5-fold cross validation performance on English and Spanish training data for a Random Forest Classifier with 20 Trees}
 \label{fig:RFC}
@@ -214,7 +214,7 @@ In general, the systems seen in Figs. \ref{fig:RFC} and \ref{fig:Log} indicate t
 \begin{figure}[h]
 \begin{minipage}[b]{1.0\linewidth}
   \centering
-  \centerline{\includegraphics[width=7.5cm]{images/LogEng}}
+  \centerline{\includegraphics[width=7cm]{images/LogEng}}
 \end{minipage}
 %\begin{minipage}[b]{1.0\linewidth}
 %  \centering
@@ -236,7 +236,7 @@ Some examples of situations where \emph{both} the advanced system and the baseli
 
 \section{Conclusions}
 
-Our main approach to this task was to find some data, then try to extract as much as we could from that data. We primarily focussed on subword features, as these effectively reduce sparsity. These subword features proved to be effective at this task, suggesting that at least one component of perceived complexity is simply the structure of the word's constituent letters. On a more \enquote{meta} level, our system improved as we introduced more data to the features.
+Our main approach to this task was to find some data, then try to extract as much as we could from that data. We primarily focussed on subword features, as these effectively reduce sparsity. These subword features were effective at this task, suggesting that one component of perceived complexity is simply the structure of the word's constituent letters. On a more \enquote{meta} level, our system improved as we introduced more data to the features.
 
 % include your own bib file like this:
 %\bibliographystyle{acl}

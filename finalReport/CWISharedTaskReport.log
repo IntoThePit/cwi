@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.27)  18 MAY 2018 14:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.27)  18 MAY 2018 14:59
 entering extended mode
 **./CWISharedTaskReport.tex
 (CWISharedTaskReport.tex
@@ -658,8 +658,17 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 44.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 55.
 
+Underfull \hbox (badness 1253) in paragraph at lines 53--54
+\OT1/ptm/m/n/10.95 tion of com-plex terms could help with au-to-
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 53--54
+\OT1/ptm/m/n/10.95 ware, stud-ies into second-language ac-qui-si-tion
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 55.
 ("C:\Users\pmfin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -670,25 +679,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
 []\OT1/ptm/m/n/10.95 Uniquely En-glish vowel/consonant di-a-
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 78.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [1{C:/Users/pmfin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
 
 ]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 78.
+
 Underfull \hbox (badness 1859) in paragraph at lines 114--116
 \OT1/ptm/m/n/10.95 that a Ran-dom For-est Clas-si-fier would be a
  []
 
 
-Underfull \vbox (badness 2547) has occurred while \output is active []
+Underfull \vbox (badness 6047) has occurred while \output is active []
 
  [2]
 Underfull \hbox (badness 1540) in paragraph at lines 167--168
@@ -702,21 +706,21 @@ Underfull \hbox (badness 1072) in paragraph at lines 195--196
  []
 
 [3]
-<images/RFCEng.png, id=50, 414.54875pt x 279.0425pt>
+<images/RFCEng.png, id=58, 414.54875pt x 279.0425pt>
 File: images/RFCEng.png Graphic file (type png)
 <use images/RFCEng.png>
 Package pdftex.def Info: images/RFCEng.png  used on input line 202.
-(pdftex.def)             Requested size: 213.39566pt x 143.63823pt.
-<images/RFCSp.png, id=52, 416.55624pt x 279.0425pt>
+(pdftex.def)             Requested size: 199.16928pt x 134.06235pt.
+<images/RFCSp.png, id=60, 416.55624pt x 279.0425pt>
 File: images/RFCSp.png Graphic file (type png)
 <use images/RFCSp.png>
 Package pdftex.def Info: images/RFCSp.png  used on input line 206.
-(pdftex.def)             Requested size: 213.39566pt x 142.94846pt.
-<images/LogEng.png, id=55, 399.4925pt x 279.0425pt>
+(pdftex.def)             Requested size: 199.16928pt x 133.41942pt.
+<images/LogEng.png, id=63, 399.4925pt x 279.0425pt>
 File: images/LogEng.png Graphic file (type png)
 <use images/LogEng.png>
 Package pdftex.def Info: images/LogEng.png  used on input line 217.
-(pdftex.def)             Requested size: 213.39566pt x 149.0542pt.
+(pdftex.def)             Requested size: 199.16928pt x 139.12067pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -737,24 +741,29 @@ Underfull \hbox (badness 1297) in paragraph at lines 235--236
 \OT1/ptm/m/it/10.95 has been awak-ened, Mar-i-ot-tini, in-ves-ti-gaci[]on,
  []
 
-(CWISharedTaskReport.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 6--11
+(CWISharedTaskReport.bbl [4 <./images/RFCEng.png> <./images/RFCSp.png> <./image
+s/LogEng.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 15--20
 []\OT1/ptm/m/n/10 Itziar Gonzalez-Dios, Mar[]a Jes[]us Aran-z-abe,
  []
 
 
-Underfull \hbox (badness 1308) in paragraph at lines 6--11
+Underfull \hbox (badness 1308) in paragraph at lines 15--20
 \OT1/ptm/m/n/10 Arantza D[]az de Ilar-raza, and Haritz Sal-aberri.
  []
 
-[4 <./images/RFCEng.png> <./images/RFCSp.png> <./images/LogEng.png>])
+
+Underfull \hbox (badness 1137) in paragraph at lines 36--40
+[]\OT1/ptm/m/n/10 Salvatore Valenti, Francesca Neri, and Alessan-dro
+ []
+
+)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
  [5
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
-
-(CWISharedTaskReport.aux)
+ (CWISharedTaskReport.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `CWISharedTaskReport.out' has not changed.
@@ -763,22 +772,22 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  )
 (\end occurred when \iffalse on line 349 was incomplete) 
 Here is how much of TeX's memory you used:
- 7195 strings out of 493305
- 104843 string characters out of 3129802
- 215713 words of memory out of 3000000
- 10634 multiletter control sequences out of 15000+200000
+ 7203 strings out of 493305
+ 105033 string characters out of 3129802
+ 214876 words of memory out of 3000000
+ 10640 multiletter control sequences out of 15000+200000
  21212 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,10n,37p,947b,485s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,10n,37p,947b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/pmfin/AppData
 /Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/pmfin/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/pmfin/Ap
 pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/pmfi
 n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/
 pmfin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CWISharedTaskReport.pdf (5 pages, 139770 bytes).
+Output written on CWISharedTaskReport.pdf (5 pages, 142322 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
+ 105 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

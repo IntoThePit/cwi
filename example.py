@@ -21,7 +21,8 @@ def execute_demo(language):
     model_mistakes = {}
     
     gold_labels = [sent['gold_label'] for sent in test_data]
-            # Error analysis:
+    
+    # Error analysis:
     sentences = [sent['sentence'] for sent in test_data]
     targets = [sent['target_word'] for sent in test_data]
 

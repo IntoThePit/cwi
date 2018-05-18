@@ -24,7 +24,6 @@ class Baseline(object):
         self.model = RandomForestClassifier(n_estimators = 20)
 #        self.model = LogisticRegression()
         
-        # This one didn't seem to do anything.
         l_rarity = defaultdict(float, 
                                (
                                  ('z' , 0.074 ),
@@ -61,17 +60,6 @@ class Baseline(object):
         self.letter_rarity = l_rarity
         
         sp_consonants = set(("v", "ll", "h", "j", "r", "rr", "z", "ñ", "x"))
-        
-#        Vowel diagraphs: ou, ow, eigh, au, aw, oo
-#        Consonant digraphs: sh, th, wh, ph
-#        Consonant blends: sl, sm, sts, scr, spr, str
-#        Initial sounds: kn, qu, wr, sk
-#        Final sounds: ck, ng, gh
-#        Endings: -ed (pronounced /d/ or /t/ or /ded/ or /ted/)
-#        Endings: -s (pronounced /s/ or /z/ or /ez/ or /es/)
-#        Endings without a vowel: -ps, -ts
-#        Suffixes/prefixes: un-, over-, under-, -ly, -ness, -ful, -est
-#        http://www.colorincolorado.org/article/capitalizing-similarities-and-differences-between-spanish-and-english
         
         eng_v_diagraphs = set(("ou", "ow", "eigh", "au", "aw", "oo"))
         eng_c_diagraphs = set(("sh", "th", "wh", "ph"))
@@ -118,15 +106,6 @@ class Baseline(object):
         self.inside_vect = np.array(np.zeros(len(self.inside_check)))
         self.suffix_vect = np.array(np.zeros(len(self.suffix_check)))
         
-        tag_keys = load('help/tagsets/upenn_tagset.pickle').keys()
-        
-        self.tag_vect_template = {}
-        tag_id = 0
-        for tag_key in tag_keys:
-            self.tag_vect_template[tag_key] = tag_id
-            tag_id += 1
-            
-        self.tag_vect = np.array(np.zeros(len(tag_keys)))
 
     def extract_features(self, word):
         len_chars = len(word) / self.avg_word_length

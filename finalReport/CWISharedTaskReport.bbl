@@ -1,5 +1,14 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{5}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Danescu-Niculescu-Mizil et~al.(2012)Danescu-Niculescu-Mizil, Cheng,
+  Kleinberg, and Lee}]{danescu2012you}
+Cristian Danescu-Niculescu-Mizil, Justin Cheng, Jon Kleinberg, and Lillian Lee.
+  2012.
+\newblock You had me at hello: How phrasing affects memorability.
+\newblock In \emph{Proceedings of the 50th Annual Meeting of the Association
+  for Computational Linguistics: Long Papers-Volume 1}, pages 892--901.
+  Association for Computational Linguistics.
 
 \bibitem[{Gonzalez-Dios et~al.(2014)Gonzalez-Dios, Aranzabe, de~Ilarraza, and
   Salaberri}]{gonzalez2014simple}
@@ -21,5 +30,12 @@ Pucktada Treeratpituk and C~Lee Giles. 2009.
 \newblock Disambiguating authors in academic publications using random forests.
 \newblock In \emph{Proceedings of the 9th ACM/IEEE-CS joint conference on
   Digital libraries}, pages 39--48. ACM.
+
+\bibitem[{Valenti et~al.(2003)Valenti, Neri, and
+  Cucchiarelli}]{valenti2003overview}
+Salvatore Valenti, Francesca Neri, and Alessandro Cucchiarelli. 2003.
+\newblock An overview of current research on automated essay grading.
+\newblock \emph{Journal of Information Technology Education: Research},
+  2:319--330.
 
 \end{thebibliography}
