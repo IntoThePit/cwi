@@ -12,6 +12,10 @@
 %% and that of ACL 08 by Joakim Nivre and Noah Smith
 
 \documentclass[11pt,a4paper]{article}
+
+
+\usepackage[utf8]{inputenc}
+
 \usepackage[hyperref]{acl2018}
 \usepackage{times}
 \usepackage{latexsym}
@@ -48,6 +52,8 @@ The task is as follows: given a target word (or set of words) within a sentence,
 
 We are interested in identifying word complexity for several reasons. Automatic extraction of complex terms could help with automated tutoring systems, Natural Language Generation, writing editing software, studies into second-language acquisition, political speech analysis, Machine Translation, as well as linguistic or psychological studies into the what people find complex. 
 
+Our code for this task is available at \url{https://github.com/IntoThePit/cwi}
+
 \section{Baseline system description}
 
 The baseline system we developed was more advanced than the initial baseline provided. Both languages used an identical model and set of features. We focused on features that could be extracted using only the target word; no context words were considered.
@@ -57,7 +63,7 @@ Our initial hypotheses to try for the baseline were as follows:
 \item Letter rarity - this feature was chosen because words with rarer letters might be harder to understand. This feature could be seen as a vague approximation of word rarity, which would otherwise require more data to learn.
 \item Max consecutive consonants, max consecutive vowels - the idea behind this was that dense combinations of letters might be difficult to parse. For example "queueing" or "rhythms". These words deviate from the more straightforward consonant-vowel-consonant-vowel pattern.
 \item Uniquely English vowel/consonant diagraphs/consonant blends - this was chosen because a non-English speaker might find these tricky.
-\item POS tags - because some POS are part of closed sets, and so potentially easier to understand. In addition, certain rarer tags might be harder to comprehend, especially in languages where the overall form of the word is changed, depending on its POS.
+\item POS tags - chosen because some POS are part of closed sets, and so potentially easier to understand. In addition, certain rarer tags might be harder to comprehend, especially in languages where the overall form of the word is changed, depending on its POS.
 \item Number of synonyms - The idea was that ambiguous words might be more confusing. Conversely, perhaps ambiguous words are actually less likely to be regarded as complex, since it is more likely that the person knows at least one of the meanings.
 \end{enumerate}
 
@@ -110,7 +116,7 @@ used Random Forests for the task of disambiguating author names. They found that
 
 
 
-When we used the Random Forest Classifier, we took a look at the most important features for each model, seen in Tables \ref{tab:EngFeats} and \ref{tab:SpFeats}. As expected, \enquote{Number of characters in target} and \enquote{Number of tokens in target} were the number 1 and 2 spots for importance for both languages. Interestingly, the \enquote{Rarity score}, which we developed as a basic measure of the use of rare letters in the word was the 3rd most important feature for English and 4th most important feature for Spanish. 
+When we used the Random Forest Classifier, we took a look at the most important features for each model, seen in Tables \ref{tab:EngFeats} and \ref{tab:SpFeats}. As expected, \enquote{Number of characters in target} and \enquote{Number of tokens in target} were ranked highly for importance for both languages. Interestingly, the \enquote{Rarity score}, which we developed as a basic measure of the use of rare letters in the word was the 3rd most important feature for English and 4th most important feature for Spanish. 
 
 \begin{table}[h]
 \begin{center}
@@ -184,9 +190,9 @@ Test & Advanced & Spanish & 0.74 \\ \hline
 
 Interestingly, while the advanced system did particularly well on the development data, it did not perform so well on the test data, being outperformed by the baseline system. This suggests that the fact that Logistic Regression seemed effective for the advanced system may have been a case of overfitting to the development data. This highlights the importance of keeping the test set separate.  The baseline system also improved on its performance for the English language, becoming on-par with the advanced system. This potentially suggests that the additional features added to the advanced system did not provide significant benefits. So by Occam's razor, the simpler, baseline system, should be preferred.
 
-Some of the ideas that we tried worked, but not in the expected way. For example, the case mentioned in the previous section, where adding subword features from 1000 simple English words improved the Spanish score. However, it appears that there is some linguistic research to suggest why this may be the case: Morphology may be particularly important to Spanish learners.
+Some of the ideas that we tried worked, but not in the expected way. For example, the case mentioned in the previous section, where adding subword features from 1000 simple English words improved the Spanish score. However, it appears that there is some linguistic research to suggest why this may be the case: Morphology may be particularly important to Spanish-speaking English language learners \cite{ramirez2010morphological}.
 
-Some of the targets that the advanced system predicted correctly, while the baseline system predicted incorrectly: \emph{flooding, hospitals, clinics, eroding, internationally brokered peace plan, amateur, ducked, pilgrimage, Guerreros, Calabria, Atenas, cercanías, datación, procedencia, esculturas, asociación, Praga, estudio}. Qualitatively, compared with the words that both systems correctly predicted, these words appear to have more unusual letter combinations, which may explain why the more robust sub-word features in the advanced system were effective.
+Here are some of the targets that the advanced system predicted correctly, while the baseline system predicted incorrectly: \emph{flooding, hospitals, clinics, eroding, internationally brokered peace plan, amateur, ducked, pilgrimage, Guerreros, Calabria, Atenas, cercanías, datación, procedencia, esculturas, asociación, Praga, estudio}. Qualitatively, compared with the words that both systems correctly predicted, these words appear to have more unusual letter combinations, which may explain why the more robust sub-word features in the advanced system were effective.
 
 \section{Learning curves}
 

@@ -171,22 +171,11 @@ class Baseline(object):
                     max_cons_c = cons_c
                     
                 c_last_l = True
-        
-#        print(max_cons_v, max_cons_c, word)
                 
         r_score_norm = r_score/len(word)
 
         test_words = word_tokenize(word)
         
-#        test_tags = [x[1] for x in pos_tag(test_words)]
-#        
-#        self.tag_vect.fill(0)
-#        
-#        for tag in test_tags:
-#            if tag not in self.tag_vect_template:
-#                print("Error! Didn't find tag! This shouldn't happen.")
-#            else:
-#                self.tag_vect[self.tag_vect_template[tag]] = 1
                 
         self.prefix_vect.fill(0)
         self.inside_vect.fill(0)  
@@ -228,25 +217,6 @@ class Baseline(object):
         
         result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect))
         
-#        if word == "biology" or word == "neurons" or word == "disruption":
-#            print(word)
-#            
-#            print("Suffixes:")
-#            for i in range(len(self.suffix_check)):
-#                if self.suffix_vect[i] == 1:
-#                    print(self.suffix_check[i], self.suffix_vect[i])
-#                
-#            print("\nPrefixes:")    
-#            for i in range(len(self.prefix_check)):
-#                if self.prefix_vect[i] == 1:
-#                    print(self.prefix_check[i], self.prefix_vect[i])
-#            
-#            print("\nInfixes:")    
-#            for i in range(len(self.inside_check)):
-#                if self.inside_vect[i] == 1:
-#                    print(self.inside_check[i], self.inside_vect[i])
-
-#        print(sparse_result)
         return result
 
     def train(self, trainset):

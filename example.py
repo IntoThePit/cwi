@@ -43,7 +43,8 @@ def execute_demo(language):
                 indices = np.argsort(importances)[::-1]
                 for f in range(20):
                     print("{}. & {} & ({:0.3}) \\\\ \hline".format(f+1, ordered_feature_list[indices[f]], importances[indices[f]]))
-    #
+
+
         predictions = model.test(test_data)
         model_predictions[model.name] = predictions
         
@@ -106,12 +107,7 @@ def execute_demo(language):
                 else:
                     perm_name = 'Both Incorrect'
                     
-#                print("{}:\n Sent: {}\n Target: {}\n".format(perm_name, sent, target))
                 print("{}:\n Sent: {}\n Target: {}\n Predicted: {}\n Gold: {}\n".format(perm_name, sent, target, predict, gold))
-
-        
-                
-    
 
 
 if __name__ == '__main__':
