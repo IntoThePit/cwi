@@ -13,6 +13,7 @@ from scipy.sparse import csr_matrix
 class Baseline(object):
 
     def __init__(self, language):
+        self.name = 'Baseline'
         self.language = language
         # from 'Multilingual and Cross-Lingual Complex Word Identification' (Yimam et. al, 2017)
         if language == 'english':

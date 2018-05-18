@@ -87,6 +87,7 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
 class Advanced(object):
 
     def __init__(self, language):
+        self.name = 'Advanced'
         self.language = language
         # from 'Multilingual and Cross-Lingual Complex Word Identification' (Yimam et. al, 2017)
         if language == 'english':
@@ -367,25 +368,7 @@ class Advanced(object):
         result = np.hstack((result, self.suffix_vect, self.inside_vect, self.prefix_vect, self.tri_vect, self.bi_vect))
         
         self.ordered_feature_list = feature_labels
-#        if word == "biology" or word == "neurons" or word == "disruption":
-#            print(word)
-#            
-#            print("Suffixes:")
-#            for i in range(len(self.suffix_check)):
-#                if self.suffix_vect[i] == 1:
-#                    print(self.suffix_check[i], self.suffix_vect[i])
-#                
-#            print("\nPrefixes:")    
-#            for i in range(len(self.prefix_check)):
-#                if self.prefix_vect[i] == 1:
-#                    print(self.prefix_check[i], self.prefix_vect[i])
-#            
-#            print("\nInfixes:")    
-#            for i in range(len(self.inside_check)):
-#                if self.inside_vect[i] == 1:
-#                    print(self.inside_check[i], self.inside_vect[i])
 
-#        print(sparse_result)
         return result
 
     def train(self, trainset):
@@ -403,13 +386,13 @@ class Advanced(object):
             # score curves, each time with 20% data randomly selected as a validation set.
             cv = ShuffleSplit(n_splits=5, test_size=0.1, random_state=0)
             estimator = RandomForestClassifier(n_estimators = 20)
-            plot_learning_curve(estimator, title, X, y, ylim=(0.6, 1.01), cv=cv, n_jobs=1)
+            plot_learning_curve(estimator, title, X, y, ylim=(0.6, 1.01), cv=cv, n_jobs=4)
             
             title = "Learning Curves (Logistic Regression) - {}".format(self.language)
             # SVC is more expensive so we do a lower number of CV iterations:
             cv = ShuffleSplit(n_splits=5, test_size=0.1, random_state=0)
             estimator = LogisticRegression()
-            plot_learning_curve(estimator, title, X, y, (0.6, 1.01), cv=cv, n_jobs=1)
+            plot_learning_curve(estimator, title, X, y, (0.6, 1.01), cv=cv, n_jobs=4)
             
             plt.show()
 

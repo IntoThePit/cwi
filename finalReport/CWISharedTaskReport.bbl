@@ -1,5 +1,13 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{2}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Gonzalez-Dios et~al.(2014)Gonzalez-Dios, Aranzabe, de~Ilarraza, and
+  Salaberri}]{gonzalez2014simple}
+Itziar Gonzalez-Dios, Mar{\'\i}a~Jes{\'u}s Aranzabe, Arantza~D{\'\i}az
+  de~Ilarraza, and Haritz Salaberri. 2014.
+\newblock Simple or complex? assessing the readability of basque texts.
+\newblock In \emph{Proceedings of COLING 2014, the 25th international
+  conference on computational linguistics: Technical papers}, pages 334--344.
 
 \bibitem[{Treeratpituk and Giles(2009)}]{treeratpituk2009disambiguating}
 Pucktada Treeratpituk and C~Lee Giles. 2009.

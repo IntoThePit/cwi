@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.27)  17 MAY 2018 19:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.27)  18 MAY 2018 01:49
 entering extended mode
 **./CWISharedTaskReport.tex
 (CWISharedTaskReport.tex
@@ -251,33 +251,30 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
- (CWISharedTaskReport.aux
-
-LaTeX Warning: Label `tab:EngFeats' multiply defined.
-
-)
+ (CWISharedTaskReport.aux)
 \openout1 = `CWISharedTaskReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 41.
- ("C:\Users\pmfin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 39.
+
+("C:\Users\pmfin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 \AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring ON on input line 41.
+Package hyperref Info: Link coloring ON on input line 39.
 
 ("C:\Users\pmfin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
 ty"
@@ -289,9 +286,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count110
 )
-LaTeX Info: Redefining \ref on input line 41.
-LaTeX Info: Redefining \pageref on input line 41.
-LaTeX Info: Redefining \nameref on input line 41.
+LaTeX Info: Redefining \ref on input line 39.
+LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \nameref on input line 39.
  (CWISharedTaskReport.out) (CWISharedTaskReport.out)
 \@outlinefile=\write3
 \openout3 = `CWISharedTaskReport.out'.
@@ -328,133 +325,145 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 ) ABD: EveryShipout initializing macros
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 42.
+(Font)              <12> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 42.
+(Font)              <8> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 42.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 42.
+(Font)              <6> on input line 40.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 40.
 
 ("C:\Users\pmfin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 
-Underfull \hbox (badness 1466) in paragraph at lines 57--58
-\OT1/ptm/m/n/10.95 what more ad-vanced than the ini-tial base-line
- []
-
-
-Underfull \hbox (badness 1389) in paragraph at lines 57--58
-\OT1/ptm/m/n/10.95 can be ex-tracted us-ing only the tar-get word;
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
 []\OT1/ptm/m/n/10.95 Uniquely En-glish vowel/consonant di-a-
  []
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 70.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
-\OT1/ptm/m/n/10.95 be-cause a non-English speaker might
- []
-
-
-Underfull \hbox (badness 1028) in paragraph at lines 63--64
-\OT1/ptm/m/n/10.95 find these tricky. This fea-ture could be
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 63--64
-\OT1/ptm/m/n/10.95 ex-panded (and made more adapt-able to
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1{C:/Users/pmfin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
 
 ]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 88.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 90.
+Underfull \hbox (badness 1859) in paragraph at lines 108--110
+\OT1/ptm/m/n/10.95 that a Ran-dom For-est Clas-si-fier would be a
+ []
 
-Underfull \vbox (badness 6047) has occurred while \output is active []
+
+Underfull \vbox (badness 2547) has occurred while \output is active []
 
  [2]
+Underfull \hbox (badness 1540) in paragraph at lines 161--162
+[]\OT1/ptm/m/n/10.95 We ran sev-eral ex-per-imenets with dif-fer-ent
+ []
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<images/RFCEng.png, id=36, 414.54875pt x 279.0425pt>
+Missing character: There is no Ã in font ptmri7t!
+Missing character: There is no ­ in font ptmri7t!
+Missing character: There is no Ã in font ptmri7t!
+Missing character: There is no ³ in font ptmri7t!
+Missing character: There is no Ã in font ptmri7t!
+Missing character: There is no ³ in font ptmri7t!
+ [3]
+<images/RFCEng.png, id=44, 414.54875pt x 279.0425pt>
 File: images/RFCEng.png Graphic file (type png)
 <use images/RFCEng.png>
-Package pdftex.def Info: images/RFCEng.png  used on input line 217.
-(pdftex.def)             Requested size: 241.84842pt x 162.79pt.
-<images/RFCSp.png, id=38, 416.55624pt x 279.0425pt>
+Package pdftex.def Info: images/RFCEng.png  used on input line 196.
+(pdftex.def)             Requested size: 213.39566pt x 143.63823pt.
+<images/RFCSp.png, id=46, 416.55624pt x 279.0425pt>
 File: images/RFCSp.png Graphic file (type png)
 <use images/RFCSp.png>
-Package pdftex.def Info: images/RFCSp.png  used on input line 221.
-(pdftex.def)             Requested size: 241.84842pt x 162.0108pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<images/LogEng.png, id=41, 399.4925pt x 279.0425pt>
+Package pdftex.def Info: images/RFCSp.png  used on input line 200.
+(pdftex.def)             Requested size: 213.39566pt x 142.94846pt.
+<images/LogEng.png, id=49, 399.4925pt x 279.0425pt>
 File: images/LogEng.png Graphic file (type png)
 <use images/LogEng.png>
-Package pdftex.def Info: images/LogEng.png  used on input line 232.
-(pdftex.def)             Requested size: 241.84842pt x 168.9298pt.
-<images/LogSp.png, id=42, 396.48125pt x 279.0425pt>
-File: images/LogSp.png Graphic file (type png)
-<use images/LogSp.png>
-Package pdftex.def Info: images/LogSp.png  used on input line 236.
-(pdftex.def)             Requested size: 241.84842pt x 170.21567pt.
+Package pdftex.def Info: images/LogEng.png  used on input line 211.
+(pdftex.def)             Requested size: 213.39566pt x 149.0542pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3] (CWISharedTaskReport.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 266.
- [4 <./images/RFCEng.png> <./images/RFCSp.png> <./images/LogEng.png> <./images/
-LogSp.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 266.
- (CWISharedTaskReport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 266.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 266.
+Missing character: There is no Ã in font ptmri7t!
+Missing character: There is no ³ in font ptmri7t!
+Missing character: There is no Ã in font ptmr7t!
+Missing character: There is no ³ in font ptmr7t!
+Missing character: There is no Ã in font ptmr7t!
+Missing character: There is no ³ in font ptmr7t!
+
+Underfull \hbox (badness 3281) in paragraph at lines 229--230
+\OT1/ptm/m/n/10.95 were: \OT1/ptm/m/it/10.95 in-ter-na-tion-ally, calm, am-a-te
+ur video,
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 229--230
+\OT1/ptm/m/it/10.95 wounds, treat-ment, Co-or-di-na-tion, Com-mit-tees,
+ []
+
+(CWISharedTaskReport.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 6--11
+[]\OT1/ptm/m/n/10 Itziar Gonzalez-Dios, Mar[]a Jes[]us Aran-z-abe,
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 6--11
+\OT1/ptm/m/n/10 Arantza D[]az de Ilar-raza, and Haritz Sal-aberri.
+ []
+
+
+Underfull \vbox (badness 2359) has occurred while \output is active []
+
+ [4 <./images/RFCEng.png> <./images/RFCSp.png> <./images/LogEng.png>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 242.
+ [5
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 242.
+
+(CWISharedTaskReport.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 242.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 242.
 Package rerunfilecheck Info: File `CWISharedTaskReport.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 266.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 242.
  )
 (\end occurred when \iffalse on line 349 was incomplete) 
 Here is how much of TeX's memory you used:
- 6866 strings out of 493305
- 101689 string characters out of 3129802
- 211867 words of memory out of 3000000
- 10317 multiletter control sequences out of 15000+200000
+ 6859 strings out of 493305
+ 101668 string characters out of 3129802
+ 213115 words of memory out of 3000000
+ 10319 multiletter control sequences out of 15000+200000
  20697 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,10n,37p,947b,364s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,10n,37p,947b,485s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/pmfin/AppData
 /Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/pmfin/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/pmfin/AppD
 ata/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/pmfin/
 AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CWISharedTaskReport.pdf (4 pages, 136529 bytes).
+Output written on CWISharedTaskReport.pdf (5 pages, 127473 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 87 PDF objects out of 1000 (max. 8388607)
+ 28 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
